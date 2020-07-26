@@ -17,9 +17,12 @@
         <![endif]-->
 
         <div id="app">
-            <h1 v-bind:title="menu">{{title}}</h1>
-            <p v-text='content'> </p>
-            <button v-on:click='hello'>Run hello function</button>
+            
+           <ul>
+               <li v-for="todo in items">{{todo}}</li> 
+           </ul>           
+           <input type="text" name="item" id="item" v-model="item">
+           <button @click="items.push(item)">Add Item</button>
         </div>
         
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -28,8 +31,8 @@
                 el: '#app',
                 data: {
                     title: 'My title',
-                    content: 'My Content for this post',
-                    menu: 'My Menu Data'
+                    item: '',
+                    items: ["item 1" , "item 2", "item 3"],
                 },
                 methods:{
                     hello: function (){
