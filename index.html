@@ -1,45 +1,14 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
-        <div id="app">
-            
-           <ul>
-               <li v-for="todo in items">{{todo}}</li> 
-           </ul>           
-           <input type="text" name="item" id="item" v-model="item">
-           <button @click="items.push(item)">Add Item</button>
-        </div>
-        
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        <script>
-            var app =  new Vue({
-                el: '#app',
-                data: {
-                    title: 'My title',
-                    item: '',
-                    items: ["item 1" , "item 2", "item 3"],
-                },
-                methods:{
-                    hello: function (){
-                       this.content = 'Word up ' + this.content; 
-                    }
-                }
-            });
-        </script>
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <Accordion v-for="item in items" :key="item.key" :item="item"></Accordion>
+    </div>
+    <script src="./dist/app.js"></script>
+</body>
 </html>
