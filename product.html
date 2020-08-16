@@ -8,8 +8,8 @@
 <body>
    <div id="app">
        <input type="text" v-model="price"> </input>
-       <div>Tax: {{ taxFormatted }} </div>
-       <div>Total: {{ totalFormatted }} </div>
+       <div>Tax: {{ moneyFormat(tax) }} </div>
+       <div>Total: {{ moneyFormat(total) }} </div>
    </div>
 
    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -22,22 +22,21 @@
                
            },
 
+           methods: {
+                moneyFormat: function(money){
+                    return '$ ' + money + '.00';
+                }
+           },
+
            computed: {
                tax: function(){
                    return this.price * .10;
                },
 
-            taxFormatted: function(){
-                return '$ ' + this.tax;
-            },
-
-            total: function() {
-                return parseInt(this.price) + parseInt(this.tax);
-            },
-
-            totalFormatted: function(){
-                return '$ ' + this.total;
-            }
+            
+                total: function() {
+                    return parseInt(this.price) + parseInt(this.tax);
+                }
 
            }
        });
