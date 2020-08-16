@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>Component Test</h1>
+        <accordion v-for="item in items" :key="item.key" :item="item">
+
+        </accordion>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+
+    Vue.component('accordion', {
+            props: ['item'],
+
+            template:`
+                <div>
+                    <p> {{ item.title }}</p>
+                    <p @click="toggle = !toggle"> Details </p>
+                    <p v-if="toggle"> {{ item.description }} </p>
+                </div>
+            `,
+
+            data: function(){
+                return{
+                    toggle: false
+                }
+            }
+    });
+
+    new Vue({
+        el: '#app',
+
+        data: {
+            items:[
+                {id: 1 , title: "Title 1", description: "this is description for 1 "},
+                {id: 2 , title: "Title 2", description: "this is description for 2 "},
+                {id: 3 , title: "Title 3", description: "this is description for 3 "},
+            ]
+        }
+        
+    });
+</script>
+</html>
